@@ -102,9 +102,11 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
 
         <nav class="menu-anchors" aria-label="Navigation du menu">
             <?php foreach ($menu as $categorie => $contenu): ?>
-                <a class="menu-anchors__link menu-anchors__link--main" href="#<?= htmlspecialchars(menuSlug($categorie)) ?>">
-                    <?= htmlspecialchars($categorie) ?>
-                </a>
+                <?php if ($categorie !== 'Menus'): ?>
+                    <a class="menu-anchors__link menu-anchors__link--main" href="#<?= htmlspecialchars(menuSlug($categorie)) ?>">
+                        <?= htmlspecialchars($categorie) ?>
+                    </a>
+                <?php endif; ?>
 
                 <?php foreach ($contenu as $cle => $valeur): ?>
                     <?php if (is_string($cle)): ?>
