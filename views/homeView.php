@@ -1,6 +1,6 @@
 <?php
 $title = "Snack Turquie Anderlecht - Dürüms, burgers, frites et livraison";
-$metaDescription = "Snack Turquie à Anderlecht, Rue de Fiennes 6. Commandez vos dürüms, sandwichs, burgers, gyros et frites sur Takeaway ou Uber Eats.";
+$metaDescription = "Snack Turquie à Anderlecht, Rue de Fiennes 6. Commandez vos dürüms, sandwichs, burgers, gyros et frites sur Takeaway, Uber Eats ou Deliveroo.";
 include 'inc/head.php';
 include 'inc/header.php';
 ?>
@@ -33,6 +33,10 @@ include 'inc/header.php';
             </div>
 
             <div class="order-links" aria-label="Commander en ligne">
+                <a href="/menu.php" class="btn-primary btn-menu">
+                    Voir le menu
+                </a>
+
                 <a
                     href="https://www.takeaway.com/be-fr/menu/snack-turquie-1070"
                     class="btn-primary btn-takeaway"
@@ -49,6 +53,15 @@ include 'inc/header.php';
                     rel="noopener noreferrer"
                 >
                     Commander sur Uber Eats
+                </a>
+
+                <a
+                    href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
+                    class="btn-secondary btn-deliveroo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Commander sur Deliveroo
                 </a>
             </div>
         </div>
@@ -76,7 +89,7 @@ include 'inc/header.php';
 
         <article class="service-option">
             <h2>Livraison</h2>
-            <p>Commandez tous les jours de 11:15 à 21:15 via Takeaway ou Uber Eats.</p>
+            <p>Commandez tous les jours de 11:15 à 21:15 via Takeaway, Uber Eats ou Deliveroo.</p>
 
             <div class="order-links">
                 <a
@@ -95,6 +108,15 @@ include 'inc/header.php';
                     rel="noopener noreferrer"
                 >
                     Uber Eats
+                </a>
+
+                <a
+                    href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
+                    class="btn-secondary btn-deliveroo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Deliveroo
                 </a>
             </div>
         </article>

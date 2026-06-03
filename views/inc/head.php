@@ -1,6 +1,6 @@
 <?php
 $pageTitle = $title ?? 'Snack Turquie Anderlecht';
-$pageDescription = $metaDescription ?? 'Snack Turquie à Anderlecht - dürüms, sandwichs, burgers, gyros, frites et livraison via Takeaway ou Uber Eats.';
+$pageDescription = $metaDescription ?? 'Snack Turquie à Anderlecht - dürüms, sandwichs, burgers, gyros, frites et livraison via Takeaway, Uber Eats ou Deliveroo.';
 
 $localBusiness = [
     '@context' => 'https://schema.org',
@@ -22,6 +22,7 @@ $localBusiness = [
     'sameAs' => [
         'https://www.takeaway.com/be-fr/menu/snack-turquie-1070',
         'https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY',
+        'https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400',
     ],
 ];
 ?>

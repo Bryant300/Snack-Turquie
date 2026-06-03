@@ -1,6 +1,6 @@
 <?php
 $title = "Panier Snack Turquie Anderlecht";
-$metaDescription = "Consultez votre panier Snack Turquie. Préparez votre commande avant de commander au snack, sur Takeaway ou sur Uber Eats.";
+$metaDescription = "Consultez votre panier Snack Turquie. Préparez votre commande avant de commander au snack, sur Takeaway, Uber Eats ou Deliveroo.";
 include 'inc/head.php';
 include 'inc/header.php';
 ?>
@@ -39,6 +39,15 @@ include 'inc/header.php';
                 rel="noopener noreferrer"
             >
                 Uber Eats
+            </a>
+
+            <a
+                href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
+                class="btn-secondary btn-deliveroo"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Deliveroo
             </a>
         </div>
     </section>

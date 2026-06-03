@@ -1,6 +1,6 @@
 <?php
 $title = "Contact Snack Turquie Anderlecht - Adresse, horaires et livraison";
-$metaDescription = "Contactez Snack Turquie à Anderlecht. Adresse : Rue de Fiennes 6, 1070 Anderlecht. Livraison tous les jours de 11:15 à 21:15 via Takeaway et Uber Eats.";
+$metaDescription = "Contactez Snack Turquie à Anderlecht. Adresse : Rue de Fiennes 6, 1070 Anderlecht. Livraison tous les jours de 11:15 à 21:15 via Takeaway, Uber Eats et Deliveroo.";
 include 'inc/head.php';
 include 'inc/header.php';
 ?>
@@ -58,6 +58,15 @@ include 'inc/header.php';
                     rel="noopener noreferrer"
                 >
                     Uber Eats
+                </a>
+
+                <a
+                    href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
+                    class="btn-secondary btn-deliveroo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Deliveroo
                 </a>
             </div>
         </article>

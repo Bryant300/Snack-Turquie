@@ -374,6 +374,29 @@ a.hero-info__item:hover {
     box-shadow: 0 18px 42px rgba(6, 193, 103, 0.32);
 }
 
+.btn-deliveroo {
+    color: #07110f;
+    background: linear-gradient(135deg, #6de6d1 0%, #00ccbc 100%);
+    border-color: rgba(0, 204, 188, 0.48);
+    box-shadow: 0 14px 34px rgba(0, 204, 188, 0.22);
+}
+
+.btn-deliveroo:hover {
+    background: linear-gradient(135deg, #8af2df 0%, #00ccbc 100%);
+    border-color: rgba(0, 204, 188, 0.68);
+    box-shadow: 0 18px 42px rgba(0, 204, 188, 0.32);
+}
+
+.btn-menu {
+    color: var(--dark-text);
+    background: var(--gradient-gold);
+    box-shadow: 0 14px 34px rgba(245, 180, 63, 0.26);
+}
+
+.btn-menu:hover {
+    box-shadow: 0 18px 42px rgba(245, 180, 63, 0.36);
+}
+
 .order-links {
     display: flex;
     flex-wrap: wrap;
