@@ -128,12 +128,11 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
         ?>
         <section
             class="menu-section"
-            id="<?= htmlspecialchars(menuSlug($categorie)) ?>"
             data-menu-section
             data-menu-group="<?= htmlspecialchars($groupe) ?>"
         >
             <?php if ($categorie !== 'Menus'): ?>
-                <h2>
+                <h2 id="<?= htmlspecialchars(menuSlug($categorie)) ?>">
                     <span><?= htmlspecialchars($categorie) ?></span>
                     <a href="#menu-top" class="menu-back" aria-label="Retour en haut du menu">&uarr;</a>
                 </h2>

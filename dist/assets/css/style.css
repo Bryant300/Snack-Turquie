@@ -581,6 +581,7 @@ a.hero-info__item:hover {
     padding-bottom: 12px;
     font-size: clamp(1.7rem, 4vw, 2.25rem);
     border-bottom: 1px solid var(--border);
+    scroll-margin-top: 190px;
 }
 
 .menu-section h3 {
@@ -591,6 +592,7 @@ a.hero-info__item:hover {
     margin: 34px 0 20px;
     color: var(--gold-soft);
     font-size: 1.25rem;
+    scroll-margin-top: 190px;
 }
 
 .menu-back {
@@ -1266,5 +1268,6 @@ footer {
     .menu-section h3 {
         justify-content: center;
         text-align: center;
+        scroll-margin-top: 20px;
     }
 }
