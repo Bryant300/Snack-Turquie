@@ -63,11 +63,13 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
         data-menu-item
         data-menu-group="<?= htmlspecialchars($groupe) ?>"
     >
-        <img
-            src="/assets/<?= htmlspecialchars($produit['image']) ?>"
-            alt="<?= htmlspecialchars($produit['nom']) ?>"
-            class="menu-item__image"
-        >
+        <div class="menu-item__media">
+            <img
+                src="/assets/<?= htmlspecialchars($produit['image']) ?>"
+                alt="<?= htmlspecialchars($produit['nom']) ?>"
+                class="menu-item__image"
+            >
+        </div>
 
         <div class="menu-item__content">
             <h4><?= htmlspecialchars($produit['nom']) ?></h4>
