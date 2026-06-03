@@ -1215,13 +1215,44 @@ footer {
         padding-top: 34px;
     }
 
+    .menu-navigation {
+        position: static;
+        gap: 10px;
+        margin-bottom: 34px;
+        padding: 12px 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
+    .menu-filters {
+        padding: 0 2px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+    }
+
+    .menu-filters::-webkit-scrollbar,
+    .menu-anchors::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu-filter {
+        flex: 0 0 auto;
+    }
+
     .menu-anchors {
         justify-content: flex-start;
+        flex-wrap: nowrap;
         gap: 8px;
-        padding: 14px;
+        padding: 0 2px 8px;
+        overflow-x: auto;
     }
 
     .menu-anchors__link {
+        flex: 0 0 auto;
         padding: 8px 12px;
         font-size: 0.88rem;
     }
