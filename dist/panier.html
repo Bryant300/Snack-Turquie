@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panier Snack Turquie Anderlecht</title>
+
+    <meta name="description" content="Consultez votre panier Snack Turquie. Préparez votre commande avant de commander au snack, sur Takeaway ou sur Uber Eats.">
+    <meta name="author" content="Snack Turquie">
+
+    <meta property="og:title" content="Panier Snack Turquie Anderlecht">
+    <meta property="og:description" content="Consultez votre panier Snack Turquie. Préparez votre commande avant de commander au snack, sur Takeaway ou sur Uber Eats.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/img/logo-snack-turquie.png">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/png" href="/assets/img/logo-snack-turquie.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script type="application/ld+json">
+        {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Snack Turquie",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue de Fiennes 6",
+        "postalCode": "1070",
+        "addressLocality": "Anderlecht",
+        "addressCountry": "BE"
+    },
+    "telephone": "+3225239727",
+    "servesCuisine": [
+        "Turc",
+        "Snack",
+        "Dürüm",
+        "Burger",
+        "Sandwich"
+    ],
+    "priceRange": "€",
+    "openingHours": [
+        "Mo-Su 11:15-21:15"
+    ],
+    "sameAs": [
+        "https://www.takeaway.com/be-fr/menu/snack-turquie-1070",
+        "https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY"
+    ]
+}    </script>
+</head>
+
+<body>
+<header>
+    <a href="/index.php">
+        <img src="/assets/img/logo-snack-turquie.png" alt="Snack Turquie" class="logo">
+    </a>
+
+    <nav>
+        <a href="/index.php">Accueil</a>
+        <a href="/menu.php">Menu</a>
+        <a href="/contact.php">Contact</a>
+        <a href="/panier.php" class="cart-button" aria-label="Ouvrir le panier">
+            <span class="cart-button__icon" aria-hidden="true">&#128722;</span>
+            <span>Panier</span>
+            <span class="cart-button__count">0</span>
+        </a>
+    </nav>
+</header>
+
+<main class="cart-page">
+    <section class="cart-panel">
+        <div>
+            <h1>Panier</h1>
+            <p data-cart-empty>Votre panier est vide pour le moment.</p>
+        </div>
+
+        <div class="cart-list" data-cart-list hidden></div>
+
+        <div class="cart-summary" data-cart-summary hidden>
+            <span>Total</span>
+            <strong data-cart-total>0,00&euro;</strong>
+        </div>
+
+        <div class="cart-actions">
+            <a href="/menu.php" class="btn-primary">Retour au menu</a>
+            <button class="btn-secondary" type="button" data-cart-clear>Vider le panier</button>
+
+            <a
+                href="https://www.takeaway.com/be-fr/menu/snack-turquie-1070"
+                class="btn-primary btn-takeaway"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Takeaway
+            </a>
+
+            <a
+                href="https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY"
+                class="btn-secondary btn-ubereats"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Uber Eats
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Bryan - Benois</p>
+</footer>
+
+<script src="/assets/js/script.js" defer></script>
+</body>
+</html>

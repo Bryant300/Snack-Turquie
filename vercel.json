@@ -1,0 +1,25 @@
+{
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/index.php",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/menu.php",
+      "destination": "/menu.html"
+    },
+    {
+      "source": "/contact.php",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/panier.php",
+      "destination": "/panier.html"
+    }
+  ]
+}
