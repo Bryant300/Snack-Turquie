@@ -14,18 +14,15 @@ include 'inc/header.php';
             <p>
                 <a href="tel:+3225239727" class="contact-link">02 523 97 27</a>
             </p>
+            <p>Passez votre commande par téléphone et venez la récupérer sur place.</p>
         </article>
 
         <article class="contact-card">
             <h2>Adresse</h2>
             <address>
                 Snack Turquie<br>
-                <a
-                    href="https://www.google.com/maps/search/?api=1&query=Snack%20Turquie%20Rue%20de%20Fiennes%206%201070%20Anderlecht"
-                    class="contact-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://www.google.com/maps/search/?api=1&query=Snack%20Turquie%20Rue%20de%20Fiennes%206%201070%20Anderlecht"
+                    class="contact-link" target="_blank" rel="noopener noreferrer">
                     Rue de Fiennes 6<br>
                     1070 Anderlecht
                 </a>
@@ -42,30 +39,18 @@ include 'inc/header.php';
         <article class="contact-card">
             <h2>Commander</h2>
             <div class="order-links">
-                <a
-                    href="https://www.takeaway.com/be-fr/menu/snack-turquie-1070"
-                    class="btn-primary btn-takeaway"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://www.takeaway.com/be-fr/menu/snack-turquie-1070" class="btn-primary btn-takeaway"
+                    target="_blank" rel="noopener noreferrer">
                     Takeaway
                 </a>
 
-                <a
-                    href="https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY"
-                    class="btn-secondary btn-ubereats"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY"
+                    class="btn-secondary btn-ubereats" target="_blank" rel="noopener noreferrer">
                     Uber Eats
                 </a>
 
-                <a
-                    href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
-                    class="btn-secondary btn-deliveroo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
+                    class="btn-secondary btn-deliveroo" target="_blank" rel="noopener noreferrer">
                     Deliveroo
                 </a>
             </div>
@@ -75,13 +60,34 @@ include 'inc/header.php';
             <h2>Horaires</h2>
             <table class="hours-table">
                 <tbody>
-                    <tr><th>Lundi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Mardi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Mercredi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Jeudi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Vendredi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Samedi</th><td>11:15 - 21:15</td></tr>
-                    <tr><th>Dimanche</th><td>11:15 - 21:15</td></tr>
+                    <tr>
+                        <th>Lundi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Mardi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Mercredi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Jeudi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Vendredi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Samedi</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
+                    <tr>
+                        <th>Dimanche</th>
+                        <td>11:15 - 21:15</td>
+                    </tr>
                 </tbody>
             </table>
         </article>
@@ -93,12 +99,9 @@ include 'inc/header.php';
     </section>
 
     <section class="contact-map" aria-label="Carte de localisation">
-        <iframe
-            title="Localisation de Snack Turquie"
+        <iframe title="Localisation de Snack Turquie"
             src="https://www.google.com/maps?q=Snack%20Turquie%20Rue%20de%20Fiennes%206%201070%20Anderlecht&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 </main>
 
