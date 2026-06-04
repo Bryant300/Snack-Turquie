@@ -49,6 +49,11 @@ $localBusiness = [
 
     <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
     <meta name="author" content="Snack Turquie">
+    <meta name="theme-color" content="#d7262f">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Snack Turquie">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
 
     <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
@@ -65,7 +70,9 @@ $localBusiness = [
     <meta name="twitter:image" content="<?= htmlspecialchars($ogImage) ?>">
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" type="image/png" href="/assets/img/logo-snack-turquie.png">
+    <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

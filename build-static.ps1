@@ -22,6 +22,8 @@ if (Test-Path $dist) {
 
 New-Item -Path $dist -ItemType Directory | Out-Null
 Copy-Item -Path $assetsSource -Destination $assetsDestination -Recurse
+Copy-Item -Path (Join-Path $root "public\manifest.webmanifest") -Destination (Join-Path $dist "manifest.webmanifest")
+Copy-Item -Path (Join-Path $root "public\service-worker.js") -Destination (Join-Path $dist "service-worker.js")
 
 $pages = @{
     "index.html" = "public\index.php"
