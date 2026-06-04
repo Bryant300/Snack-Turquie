@@ -719,10 +719,22 @@ return [
     ],
     'Suppléments' => [
         [
-            'nom' => 'Olives/Feta/Cheese',
+            'nom' => 'Olives',
             'prix' => 1.00,
             'image' => 'img/supplement/sup.png',
-            'description' => 'Olives, Feta et Cheese.',
+            'description' => 'Supplément olives.',
+        ],
+        [
+            'nom' => 'Feta',
+            'prix' => 1.00,
+            'image' => 'img/supplement/sup.png',
+            'description' => 'Supplément feta.',
+        ],
+        [
+            'nom' => 'Cheese',
+            'prix' => 1.00,
+            'image' => 'img/supplement/sup.png',
+            'description' => 'Supplément cheese.',
         ],
     ],
 ];
