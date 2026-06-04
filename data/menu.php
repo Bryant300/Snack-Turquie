@@ -304,10 +304,10 @@ return [
             'description' => 'Kapsalon avec du poulet, des frites, du fromage fondu, de la salade et de la sauce.',
         ],
         [
-            'nom' => 'Kapsalon Boeuf',
+            'nom' => 'Kapsalon Bœuf',
             'prix' => 9.50,
             'image' => 'img/kapsalon/kapsalon.png',
-            'description' => 'Kapsalon avec de la viande de boeuf, des frites, du fromage fondu, de la salade et de la sauce.',
+            'description' => 'Kapsalon avec de la viande de bœuf, des frites, du fromage fondu, de la salade et de la sauce.',
         ],
         [
             'nom' => 'Kapsalon Mixte',
@@ -325,7 +325,7 @@ return [
             'nom' => 'Kapsalon Kefta',
             'prix' => 10.00,
             'image' => 'img/kapsalon/kapsalon.png',
-            'description' => 'Kapsalon avec de la viande de boeuf préparée façon kefta, des frites, du fromage fondu, de la salade et de la sauce.',
+            'description' => 'Kapsalon avec de la viande de bœuf préparée façon kefta, des frites, du fromage fondu, de la salade et de la sauce.',
         ],
         [
             'nom' => 'Kapsalon Merguez',
@@ -345,13 +345,13 @@ return [
             'nom' => 'Assiette Salade',
             'prix' => 10.00,
             'image' => 'img/assiettes/assiette-salade.png',
-            'description' => 'Assiette avec de la differentes salades.',
+            'description' => 'Assiette avec différentes salades.',
         ],
         [
             'nom' => 'Assiette Viande',
             'prix' => 18.00,
             'image' => 'img/assiettes/assiette-viandes.png',
-            'description' => 'Assiette avec de la viande de boeuf préparée, des frites, de la salade et de la sauce.',
+            'description' => 'Assiette avec de la viande de bœuf préparée, des frites, de la salade et de la sauce.',
         ],
         [
             'nom' => 'Assiette Pitta',
@@ -445,7 +445,7 @@ return [
             'nom' => 'Hamburger',
             'prix' => 3.50,
             'image' => 'img/accompagnement/burger.png',
-            'description' => 'Steack haché.',
+            'description' => 'Steak haché.',
         ],
         [
             'nom' => 'Brochette de viande',
@@ -528,13 +528,13 @@ return [
     ],
     'Frites' => [
         [
-            'nom' => 'Petite frites',
+            'nom' => 'Petite frite',
             'prix' => 3.50,
             'image' => 'img/frite/frite.png',
             'description' => 'Petite portion de frites.',
         ],
         [
-            'nom' => 'Grande frites',
+            'nom' => 'Grande frite',
             'prix' => 4.00,
             'image' => 'img/frite/frite.png',
             'description' => 'Grande portion de frites.',
@@ -572,16 +572,16 @@ return [
             'description' => 'Sauce samouraï.',
         ],
         [
-            'nom' => 'Sauce Americaine',
+            'nom' => 'Sauce Américaine',
             'prix' => 1.00,
             'image' => 'img/sauces/sauces.png',
-            'description' => 'Sauce Americaine.',
+            'description' => 'Sauce Américaine.',
         ],
         [
             'nom' => 'Sauce Tartare',
             'prix' => 1.00,
             'image' => 'img/sauces/sauces.png',
-            'description' => 'Sauce Tartare .',
+            'description' => 'Sauce Tartare.',
         ],
         [
             'nom' => 'Sauce Pilipili',

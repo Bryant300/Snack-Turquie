@@ -19,35 +19,26 @@ include 'inc/header.php';
             <strong data-cart-total>0,00&euro;</strong>
         </div>
 
+        <form class="cart-customer" data-cart-customer>
+            <h2>Informations client</h2>
+
+            <label>
+                <span>Nom</span>
+                <input type="text" name="customer_name" data-customer-name autocomplete="name" required>
+            </label>
+
+            <label>
+                <span>Téléphone</span>
+                <input type="tel" name="customer_phone" data-customer-phone autocomplete="tel" required>
+            </label>
+        </form>
+
         <div class="cart-actions">
             <a href="/menu.php" class="btn-primary">Retour au menu</a>
             <button class="btn-secondary" type="button" data-cart-clear>Vider le panier</button>
 
-            <a
-                href="https://www.takeaway.com/be-fr/menu/snack-turquie-1070"
-                class="btn-primary btn-takeaway"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Takeaway
-            </a>
-
-            <a
-                href="https://www.ubereats.com/be/store/snack-turquie/1U4N36M_UeueIgfx0qMV5Q?diningMode=DELIVERY"
-                class="btn-secondary btn-ubereats"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Uber Eats
-            </a>
-
-            <a
-                href="https://deliveroo.be/fr/menu/Brussels/brussels-cureghem/snack-turquie?day=today&geohash=u1511vnkk42x&time=11%3A30&timestamp=1780565400"
-                class="btn-secondary btn-deliveroo"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Deliveroo
+            <a href="#" class="btn-primary btn-whatsapp" data-whatsapp-order>
+                Commander par WhatsApp
             </a>
         </div>
     </section>

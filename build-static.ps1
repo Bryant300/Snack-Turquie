@@ -7,7 +7,13 @@ $assetsSource = Join-Path $root "public\assets"
 $assetsDestination = Join-Path $dist "assets"
 
 if (-not (Test-Path $php)) {
-    throw "PHP introuvable dans C:\php\php.exe"
+    $phpCommand = Get-Command php -ErrorAction SilentlyContinue
+
+    if (-not $phpCommand) {
+        throw "PHP introuvable. Installez PHP dans C:\php\php.exe ou ajoutez php au PATH."
+    }
+
+    $php = $phpCommand.Source
 }
 
 if (Test-Path $dist) {

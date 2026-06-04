@@ -64,9 +64,14 @@ const optionForm = document.querySelector('[data-option-form]');
 const optionTitle = document.querySelector('[data-option-title]');
 const sauceField = document.querySelector('[data-sauce-field]');
 const drinkField = document.querySelector('[data-drink-field]');
+const supplementField = document.querySelector('[data-supplement-field]');
 const sauceSelect = document.querySelector('[data-option-sauce]');
 const drinkSelect = document.querySelector('[data-option-drink]');
+const supplementSelect = document.querySelector('[data-option-supplement]');
 const optionCancel = document.querySelector('[data-option-cancel]');
+const customerName = document.querySelector('[data-customer-name]');
+const customerPhone = document.querySelector('[data-customer-phone]');
+const whatsappOrder = document.querySelector('[data-whatsapp-order]');
 
 let pendingProduct = null;
 
@@ -100,6 +105,7 @@ function getOptionSignature(options = {}) {
     return JSON.stringify({
         sauce: options.sauce ?? '',
         drink: options.drink ?? '',
+        supplement: options.supplement ?? '',
     });
 }
 
@@ -133,6 +139,7 @@ function renderCartPage() {
         const optionLines = [
             item.options?.sauce ? `Sauce : ${escapeHtml(item.options.sauce)}` : '',
             item.options?.drink ? `Boisson : ${escapeHtml(item.options.drink)}` : '',
+            item.options?.supplement ? `Supplément : ${escapeHtml(item.options.supplement)} (+${formatPrice(item.options.supplementPrice ?? 0)})` : '',
         ].filter(Boolean);
 
         const row = document.createElement('article');
@@ -156,6 +163,7 @@ function renderCartPage() {
     });
 
     cartTotal.textContent = formatPrice(getCartTotal(cart));
+    updateWhatsappLink();
 }
 
 function addToCart(name, price, options = {}) {
@@ -174,6 +182,74 @@ function addToCart(name, price, options = {}) {
     saveCart(cart);
     updateCartCount();
     renderCartPage();
+}
+
+function getSelectedSupplement() {
+    if (!supplementSelect?.value) {
+        return { name: '', price: 0 };
+    }
+
+    const selectedOption = supplementSelect.selectedOptions[0];
+    const price = Number(selectedOption?.dataset.price ?? 0);
+
+    return {
+        name: supplementSelect.value,
+        price: Number.isNaN(price) ? 0 : price,
+    };
+}
+
+function getCartMessage(cart, name, phone) {
+    const lines = [
+        'Bonjour Snack Turquie, je souhaite passer commande.',
+        '',
+        `Nom : ${name}`,
+        `Téléphone : ${phone}`,
+        '',
+        'Commande :',
+    ];
+
+    cart.forEach((item) => {
+        lines.push(`- ${item.quantity}x ${item.name} - ${formatPrice(item.price * item.quantity)}`);
+
+        if (item.options?.sauce) {
+            lines.push(`  Sauce : ${item.options.sauce}`);
+        }
+
+        if (item.options?.drink) {
+            lines.push(`  Boisson : ${item.options.drink}`);
+        }
+
+        if (item.options?.supplement) {
+            lines.push(`  Supplément : ${item.options.supplement} (+${formatPrice(item.options.supplementPrice ?? 0)})`);
+        }
+    });
+
+    lines.push('');
+    lines.push(`Total : ${formatPrice(getCartTotal(cart))}`);
+
+    return lines.join('\n');
+}
+
+function updateWhatsappLink() {
+    if (!whatsappOrder) {
+        return;
+    }
+
+    const cart = getCart();
+    const name = customerName?.value.trim() ?? '';
+    const phone = customerPhone?.value.trim() ?? '';
+    const canOrder = cart.length > 0 && name && phone;
+
+    whatsappOrder.classList.toggle('is-disabled', !canOrder);
+    whatsappOrder.setAttribute('aria-disabled', String(!canOrder));
+
+    if (!canOrder) {
+        whatsappOrder.href = '#';
+        return;
+    }
+
+    const message = encodeURIComponent(getCartMessage(cart, name, phone));
+    whatsappOrder.href = `https://wa.me/3225239727?text=${message}`;
 }
 
 function updateCartItem(index, change) {
@@ -209,7 +285,7 @@ function flashAdded(button, price) {
 }
 
 function openOptionModal(product) {
-    if (!optionModal || !optionTitle || !sauceField || !drinkField || !sauceSelect || !drinkSelect) {
+    if (!optionModal || !optionTitle || !sauceField || !drinkField || !supplementField || !sauceSelect || !drinkSelect || !supplementSelect) {
         addToCart(product.name, product.price);
         return;
     }
@@ -217,8 +293,10 @@ function openOptionModal(product) {
     optionTitle.textContent = product.name;
     sauceField.hidden = !product.optionsType.includes('sauce');
     drinkField.hidden = !product.optionsType.includes('drink');
+    supplementField.hidden = false;
     sauceSelect.value = '';
     drinkSelect.value = '';
+    supplementSelect.value = '';
     optionModal.hidden = false;
 }
 
@@ -279,9 +357,14 @@ optionForm?.addEventListener('submit', (event) => {
         return;
     }
 
-    addToCart(pendingProduct.name, pendingProduct.price, {
+    const supplement = getSelectedSupplement();
+    const finalPrice = pendingProduct.price + supplement.price;
+
+    addToCart(pendingProduct.name, finalPrice, {
         sauce: needsSauce ? sauceSelect.value : '',
         drink: needsDrink ? drinkSelect.value : '',
+        supplement: supplement.name,
+        supplementPrice: supplement.price,
     });
 
     flashAdded(pendingProduct.button, pendingProduct.price);
@@ -312,6 +395,29 @@ cartClear?.addEventListener('click', () => {
     saveCart([]);
     updateCartCount();
     renderCartPage();
+});
+
+customerName?.addEventListener('input', updateWhatsappLink);
+customerPhone?.addEventListener('input', updateWhatsappLink);
+
+whatsappOrder?.addEventListener('click', (event) => {
+    updateWhatsappLink();
+
+    if (whatsappOrder.getAttribute('aria-disabled') === 'true') {
+        event.preventDefault();
+
+        if (!getCart().length) {
+            cartEmpty?.focus();
+            return;
+        }
+
+        if (!customerName?.value.trim()) {
+            customerName?.focus();
+            return;
+        }
+
+        customerPhone?.focus();
+    }
 });
 
 updateCartCount();
