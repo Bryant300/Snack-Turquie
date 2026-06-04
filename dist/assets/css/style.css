@@ -836,9 +836,43 @@ a.hero-info__item:hover {
     gap: 8px;
 }
 
-.option-field span {
+.option-field span,
+.option-field legend {
     color: var(--gold-soft);
     font-weight: 800;
+}
+
+.option-field--supplements {
+    padding: 0;
+    border: 0;
+}
+
+.option-checks {
+    display: grid;
+    gap: 8px;
+}
+
+.option-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.option-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gold);
+}
+
+.option-check span {
+    color: white;
+    font-weight: 700;
 }
 
 .option-field select {

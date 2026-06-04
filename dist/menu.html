@@ -3465,18 +3465,23 @@
                             </select>
         </label>
 
-        <label class="option-field" data-supplement-field>
-            <span>Supplément</span>
-            <select data-option-supplement>
-                <option value="" data-price="0">Aucun supplément</option>
-                                    <option
-                        value="Olives/Feta/Cheese"
-                        data-price="1"
-                    >
-                        Olives/Feta/Cheese                        (+1,00&euro;)
-                    </option>
-                            </select>
-        </label>
+        <fieldset class="option-field option-field--supplements" data-supplement-field>
+            <legend>Suppléments</legend>
+
+            <div class="option-checks">
+                                    <label class="option-check">
+                        <input
+                            type="checkbox"
+                            value="Olives/Feta/Cheese"
+                            data-option-supplement
+                            data-price="1"
+                        >
+                        <span>
+                            Olives/Feta/Cheese                            (+1,00&euro;)
+                        </span>
+                    </label>
+                            </div>
+        </fieldset>
 
         <div class="option-modal__actions">
             <button class="btn-secondary" type="button" data-option-cancel>Annuler</button>

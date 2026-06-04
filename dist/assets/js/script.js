@@ -67,7 +67,7 @@ const drinkField = document.querySelector('[data-drink-field]');
 const supplementField = document.querySelector('[data-supplement-field]');
 const sauceSelect = document.querySelector('[data-option-sauce]');
 const drinkSelect = document.querySelector('[data-option-drink]');
-const supplementSelect = document.querySelector('[data-option-supplement]');
+const supplementInputs = document.querySelectorAll('[data-option-supplement]');
 const optionCancel = document.querySelector('[data-option-cancel]');
 const customerName = document.querySelector('[data-customer-name]');
 const customerPhone = document.querySelector('[data-customer-phone]');
@@ -105,12 +105,27 @@ function getOptionSignature(options = {}) {
     return JSON.stringify({
         sauce: options.sauce ?? '',
         drink: options.drink ?? '',
-        supplement: options.supplement ?? '',
+        supplements: getCartItemSupplements(options).map((supplement) => supplement.name),
     });
 }
 
 function getCartTotal(cart) {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+}
+
+function getCartItemSupplements(options = {}) {
+    if (Array.isArray(options.supplements)) {
+        return options.supplements;
+    }
+
+    if (options.supplement) {
+        return [{
+            name: options.supplement,
+            price: options.supplementPrice ?? 0,
+        }];
+    }
+
+    return [];
 }
 
 function updateCartCount() {
@@ -136,10 +151,11 @@ function renderCartPage() {
     cartList.innerHTML = '';
 
     cart.forEach((item, index) => {
+        const supplements = getCartItemSupplements(item.options);
         const optionLines = [
             item.options?.sauce ? `Sauce : ${escapeHtml(item.options.sauce)}` : '',
             item.options?.drink ? `Boisson : ${escapeHtml(item.options.drink)}` : '',
-            item.options?.supplement ? `Supplément : ${escapeHtml(item.options.supplement)} (+${formatPrice(item.options.supplementPrice ?? 0)})` : '',
+            supplements.length ? `Suppléments : ${supplements.map((supplement) => `${escapeHtml(supplement.name)} (+${formatPrice(supplement.price)})`).join(', ')}` : '',
         ].filter(Boolean);
 
         const row = document.createElement('article');
@@ -184,18 +200,17 @@ function addToCart(name, price, options = {}) {
     renderCartPage();
 }
 
-function getSelectedSupplement() {
-    if (!supplementSelect?.value) {
-        return { name: '', price: 0 };
-    }
+function getSelectedSupplements() {
+    return [...supplementInputs]
+        .filter((input) => input.checked)
+        .map((input) => {
+            const price = Number(input.dataset.price ?? 0);
 
-    const selectedOption = supplementSelect.selectedOptions[0];
-    const price = Number(selectedOption?.dataset.price ?? 0);
-
-    return {
-        name: supplementSelect.value,
-        price: Number.isNaN(price) ? 0 : price,
-    };
+            return {
+                name: input.value,
+                price: Number.isNaN(price) ? 0 : price,
+            };
+        });
 }
 
 function getCartMessage(cart, name, phone) {
@@ -209,6 +224,8 @@ function getCartMessage(cart, name, phone) {
     ];
 
     cart.forEach((item) => {
+        const supplements = getCartItemSupplements(item.options);
+
         lines.push(`- ${item.quantity}x ${item.name} - ${formatPrice(item.price * item.quantity)}`);
 
         if (item.options?.sauce) {
@@ -219,8 +236,10 @@ function getCartMessage(cart, name, phone) {
             lines.push(`  Boisson : ${item.options.drink}`);
         }
 
-        if (item.options?.supplement) {
-            lines.push(`  Supplément : ${item.options.supplement} (+${formatPrice(item.options.supplementPrice ?? 0)})`);
+        if (supplements.length) {
+            supplements.forEach((supplement) => {
+                lines.push(`  Supplément : ${supplement.name} (+${formatPrice(supplement.price)})`);
+            });
         }
     });
 
@@ -285,7 +304,7 @@ function flashAdded(button, price) {
 }
 
 function openOptionModal(product) {
-    if (!optionModal || !optionTitle || !sauceField || !drinkField || !supplementField || !sauceSelect || !drinkSelect || !supplementSelect) {
+    if (!optionModal || !optionTitle || !sauceField || !drinkField || !supplementField || !sauceSelect || !drinkSelect) {
         addToCart(product.name, product.price);
         return;
     }
@@ -296,7 +315,9 @@ function openOptionModal(product) {
     supplementField.hidden = false;
     sauceSelect.value = '';
     drinkSelect.value = '';
-    supplementSelect.value = '';
+    supplementInputs.forEach((input) => {
+        input.checked = false;
+    });
     optionModal.hidden = false;
 }
 
@@ -357,14 +378,14 @@ optionForm?.addEventListener('submit', (event) => {
         return;
     }
 
-    const supplement = getSelectedSupplement();
-    const finalPrice = pendingProduct.price + supplement.price;
+    const supplements = getSelectedSupplements();
+    const supplementTotal = supplements.reduce((total, supplement) => total + supplement.price, 0);
+    const finalPrice = pendingProduct.price + supplementTotal;
 
     addToCart(pendingProduct.name, finalPrice, {
         sauce: needsSauce ? sauceSelect.value : '',
         drink: needsDrink ? drinkSelect.value : '',
-        supplement: supplement.name,
-        supplementPrice: supplement.price,
+        supplements,
     });
 
     flashAdded(pendingProduct.button, pendingProduct.price);

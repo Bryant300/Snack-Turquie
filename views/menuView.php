@@ -194,21 +194,26 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
             </select>
         </label>
 
-        <label class="option-field" data-supplement-field>
-            <span>Supplément</span>
-            <select data-option-supplement>
-                <option value="" data-price="0">Aucun supplément</option>
+        <fieldset class="option-field option-field--supplements" data-supplement-field>
+            <legend>Suppléments</legend>
+
+            <div class="option-checks">
                 <?php foreach ($menu['Suppléments'] as $supplement): ?>
-                    <option
-                        value="<?= htmlspecialchars($supplement['nom']) ?>"
-                        data-price="<?= htmlspecialchars((string) $supplement['prix']) ?>"
-                    >
-                        <?= htmlspecialchars($supplement['nom']) ?>
-                        (+<?= htmlspecialchars(number_format($supplement['prix'], 2, ',', ' ')) ?>&euro;)
-                    </option>
+                    <label class="option-check">
+                        <input
+                            type="checkbox"
+                            value="<?= htmlspecialchars($supplement['nom']) ?>"
+                            data-option-supplement
+                            data-price="<?= htmlspecialchars((string) $supplement['prix']) ?>"
+                        >
+                        <span>
+                            <?= htmlspecialchars($supplement['nom']) ?>
+                            (+<?= htmlspecialchars(number_format($supplement['prix'], 2, ',', ' ')) ?>&euro;)
+                        </span>
+                    </label>
                 <?php endforeach; ?>
-            </select>
-        </label>
+            </div>
+        </fieldset>
 
         <div class="option-modal__actions">
             <button class="btn-secondary" type="button" data-option-cancel>Annuler</button>
