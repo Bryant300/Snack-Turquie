@@ -50,6 +50,15 @@ include 'inc/header.php';
             illustratif.
         </p>
     </section>
+
+    <section class="legal-section">
+        <h2>Mention halal</h2>
+        <p>
+            Les viandes proposées sont indiquées halal selon les informations communiquées par
+            l'exploitant. Pour toute question précise sur les produits ou fournisseurs, contactez
+            directement Snack Turquie avant de commander.
+        </p>
+    </section>
 </main>
 
 <?php include 'inc/footer.php'; ?>

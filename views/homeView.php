@@ -30,6 +30,11 @@ include 'inc/header.php';
                     <span>Livraison</span>
                     <strong>Tous les jours de 11:15 à 21:15</strong>
                 </div>
+
+                <div class="hero-info__item hero-info__item--halal">
+                    <span>Halal</span>
+                    <strong>Viandes halal</strong>
+                </div>
             </div>
 
             <div class="order-links" aria-label="Commander en ligne">

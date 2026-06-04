@@ -34,6 +34,15 @@ include 'inc/header.php';
             Une commande envoyée via WhatsApp n'est confirmée qu'après réponse du snack.
         </p>
     </section>
+
+    <section class="legal-section">
+        <h2>Halal</h2>
+        <p>
+            Les viandes sont indiquées halal selon les informations communiquées par l'exploitant.
+            Cette mention ne remplace pas les informations allergènes : en cas d'allergie ou de doute,
+            contactez le snack avant de commander.
+        </p>
+    </section>
 </main>
 
 <?php include 'inc/footer.php'; ?>

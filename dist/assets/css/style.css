@@ -481,6 +481,19 @@ a.hero-info__item:hover {
     border-radius: 999px;
 }
 
+.menu-note {
+    width: fit-content;
+    max-width: 100%;
+    margin: -14px auto 30px;
+    padding: 10px 16px;
+    color: var(--gold-soft);
+    font-weight: 800;
+    text-align: center;
+    background: rgba(245, 180, 63, 0.1);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+}
+
 /* =========================
    ANCRES
 ========================= */
