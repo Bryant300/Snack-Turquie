@@ -9,6 +9,9 @@ include 'inc/header.php';
     <section class="hero">
         <div class="hero-content">
             <img src="/assets/img/logo-snack-turquie.png" alt="Snack Turquie" class="hero-logo">
+            <span class="halal-badge" aria-label="Viandes halal">
+                <span>Halal</span>
+            </span>
 
             <div class="hero-info" aria-label="Informations pratiques">
                 <a href="tel:+3225239727" class="hero-info__item">
@@ -31,10 +34,6 @@ include 'inc/header.php';
                     <strong>Tous les jours de 11:15 à 21:15</strong>
                 </div>
 
-                <div class="hero-info__item hero-info__item--halal">
-                    <span>Halal</span>
-                    <strong>Viandes halal</strong>
-                </div>
             </div>
 
             <div class="order-links" aria-label="Commander en ligne">
