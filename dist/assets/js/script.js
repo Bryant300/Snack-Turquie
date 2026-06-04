@@ -71,6 +71,9 @@ const supplementInputs = document.querySelectorAll('[data-option-supplement]');
 const optionCancel = document.querySelector('[data-option-cancel]');
 const customerName = document.querySelector('[data-customer-name]');
 const customerPhone = document.querySelector('[data-customer-phone]');
+const orderType = document.querySelector('[data-order-type]');
+const orderTime = document.querySelector('[data-order-time]');
+const orderNote = document.querySelector('[data-order-note]');
 const whatsappOrder = document.querySelector('[data-whatsapp-order]');
 
 let pendingProduct = null;
@@ -213,15 +216,25 @@ function getSelectedSupplements() {
         });
 }
 
-function getCartMessage(cart, name, phone) {
+function getCartMessage(cart, name, phone, type, time, note) {
     const lines = [
         'Bonjour Snack Turquie, je souhaite passer commande.',
         '',
         `Nom : ${name}`,
         `Téléphone : ${phone}`,
-        '',
-        'Commande :',
+        `Mode : ${type}`,
     ];
+
+    if (time) {
+        lines.push(`Heure souhaitée : ${time}`);
+    }
+
+    if (note) {
+        lines.push(`Remarque : ${note}`);
+    }
+
+    lines.push('');
+    lines.push('Commande :');
 
     cart.forEach((item) => {
         const supplements = getCartItemSupplements(item.options);
@@ -257,7 +270,10 @@ function updateWhatsappLink() {
     const cart = getCart();
     const name = customerName?.value.trim() ?? '';
     const phone = customerPhone?.value.trim() ?? '';
-    const canOrder = cart.length > 0 && name && phone;
+    const type = orderType?.value.trim() ?? 'À emporter';
+    const time = orderTime?.value.trim() ?? '';
+    const note = orderNote?.value.trim() ?? '';
+    const canOrder = cart.length > 0 && name && phone && type;
 
     whatsappOrder.classList.toggle('is-disabled', !canOrder);
     whatsappOrder.setAttribute('aria-disabled', String(!canOrder));
@@ -267,7 +283,7 @@ function updateWhatsappLink() {
         return;
     }
 
-    const message = encodeURIComponent(getCartMessage(cart, name, phone));
+    const message = encodeURIComponent(getCartMessage(cart, name, phone, type, time, note));
     whatsappOrder.href = `https://wa.me/3225239727?text=${message}`;
 }
 
@@ -420,6 +436,9 @@ cartClear?.addEventListener('click', () => {
 
 customerName?.addEventListener('input', updateWhatsappLink);
 customerPhone?.addEventListener('input', updateWhatsappLink);
+orderType?.addEventListener('change', updateWhatsappLink);
+orderTime?.addEventListener('input', updateWhatsappLink);
+orderNote?.addEventListener('input', updateWhatsappLink);
 
 whatsappOrder?.addEventListener('click', (event) => {
     updateWhatsappLink();
@@ -437,7 +456,12 @@ whatsappOrder?.addEventListener('click', (event) => {
             return;
         }
 
-        customerPhone?.focus();
+        if (!customerPhone?.value.trim()) {
+            customerPhone?.focus();
+            return;
+        }
+
+        orderType?.focus();
     }
 });
 

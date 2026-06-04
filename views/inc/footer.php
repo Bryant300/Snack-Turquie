@@ -5,7 +5,7 @@
         <a href="/allergenes.php">Allergènes</a>
         <a href="/conditions-commande.php">Conditions de commande</a>
     </nav>
-    <p>&copy; <?= date('Y') ?> Bryan - Benois</p>
+    <p>&copy; <?= date('Y') ?> Snack Turquie - Site réalisé par Bryan Benois</p>
 </footer>
 
 <script src="/assets/js/script.js" defer></script>

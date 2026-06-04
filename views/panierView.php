@@ -31,7 +31,34 @@ include 'inc/header.php';
                 <span>Téléphone</span>
                 <input type="tel" name="customer_phone" data-customer-phone autocomplete="tel" required>
             </label>
+
+            <label>
+                <span>Mode de commande</span>
+                <select name="order_type" data-order-type required>
+                    <option value="À emporter">À emporter</option>
+                    <option value="Livraison">Livraison</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Heure souhaitée</span>
+                <input type="time" name="order_time" data-order-time>
+            </label>
+
+            <label class="cart-customer__wide">
+                <span>Remarque</span>
+                <textarea
+                    name="order_note"
+                    data-order-note
+                    rows="3"
+                    placeholder="Exemple : sans oignons, sauce à part..."
+                ></textarea>
+            </label>
         </form>
+
+        <p class="cart-confirmation-note">
+            La commande est confirmée uniquement après réponse du snack sur WhatsApp.
+        </p>
 
         <div class="cart-actions">
             <a href="/menu.php" class="btn-primary">Retour au menu</a>

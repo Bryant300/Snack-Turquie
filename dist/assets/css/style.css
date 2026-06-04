@@ -1125,7 +1125,9 @@ a.hero-info__item:hover {
     font-weight: 800;
 }
 
-.cart-customer input {
+.cart-customer input,
+.cart-customer select,
+.cart-customer textarea {
     width: 100%;
     min-height: 46px;
     padding: 10px 12px;
@@ -1136,9 +1138,34 @@ a.hero-info__item:hover {
     border-radius: 12px;
 }
 
-.cart-customer input:focus {
+.cart-customer select option {
+    color: var(--dark-text);
+    background: #fff7ed;
+}
+
+.cart-customer textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.cart-customer__wide {
+    grid-column: 1 / -1;
+}
+
+.cart-customer input:focus,
+.cart-customer select:focus,
+.cart-customer textarea:focus {
     outline: 3px solid rgba(245, 180, 63, 0.2);
     border-color: var(--border-strong);
+}
+
+.cart-confirmation-note {
+    padding: 14px 16px;
+    color: var(--gold-soft);
+    font-weight: 800;
+    background: rgba(245, 180, 63, 0.1);
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
 }
 
 .btn-whatsapp {
@@ -1322,6 +1349,7 @@ footer {
 }
 
 .footer-links {
+    justify-content: center;
     margin-bottom: 16px;
 }
 
