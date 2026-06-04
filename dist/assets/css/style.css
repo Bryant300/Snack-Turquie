@@ -669,6 +669,7 @@ a.hero-info__item:hover {
     min-height: 380px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .menu-section[data-menu-group="extras"] .menu-item {

@@ -37,6 +37,11 @@ function menuGroupe(string $categorie): string
     return in_array($categorie, $extras, true) ? 'extras' : 'plats';
 }
 
+function menuCategorieVisible(string $categorie): bool
+{
+    return $categorie !== 'Suppléments';
+}
+
 function menuEstCompact(string $categorie): bool
 {
     return in_array($categorie, ['Sauces', 'Boissons'], true);
@@ -62,6 +67,9 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
         class="menu-item"
         data-menu-item
         data-menu-group="<?= htmlspecialchars($groupe) ?>"
+        data-product-name="<?= htmlspecialchars($produit['nom']) ?>"
+        data-product-price="<?= htmlspecialchars((string) $produit['prix']) ?>"
+        data-product-options="<?= htmlspecialchars($optionsType) ?>"
     >
         <div class="menu-item__media">
             <img
@@ -105,6 +113,10 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
 
         <nav class="menu-anchors" aria-label="Navigation du menu">
             <?php foreach ($menu as $categorie => $contenu): ?>
+                <?php if (!menuCategorieVisible($categorie)) {
+                    continue;
+                } ?>
+
                 <?php if ($categorie !== 'Menus'): ?>
                     <a class="menu-anchors__link menu-anchors__link--main" href="#<?= htmlspecialchars(menuSlug($categorie)) ?>">
                         <?= htmlspecialchars($categorie) ?>
@@ -125,6 +137,10 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
     <p class="menu-empty" data-menu-empty hidden>Aucun produit ne correspond à votre recherche.</p>
 
     <?php foreach ($menu as $categorie => $contenu): ?>
+        <?php if (!menuCategorieVisible($categorie)) {
+            continue;
+        } ?>
+
         <?php
         $groupe = menuGroupe($categorie);
         $compact = menuEstCompact($categorie);

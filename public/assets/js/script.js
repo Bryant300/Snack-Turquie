@@ -345,24 +345,29 @@ function closeOptionModal() {
     pendingProduct = null;
 }
 
-document.querySelectorAll('.menu-item__price').forEach((button) => {
-    button.addEventListener('click', () => {
-        const name = button.dataset.productName;
-        const price = Number(button.dataset.productPrice);
-        const optionsType = button.dataset.productOptions ?? 'none';
+function selectProduct(card) {
+    const button = card.querySelector('.menu-item__price');
+    const name = card.dataset.productName;
+    const price = Number(card.dataset.productPrice);
+    const optionsType = card.dataset.productOptions ?? 'none';
 
-        if (!name || Number.isNaN(price)) {
-            return;
-        }
+    if (!button || !name || Number.isNaN(price)) {
+        return;
+    }
 
-        if (optionsType !== 'none') {
-            pendingProduct = { name, price, optionsType, button };
-            openOptionModal(pendingProduct);
-            return;
-        }
+    if (optionsType !== 'none') {
+        pendingProduct = { name, price, optionsType, button };
+        openOptionModal(pendingProduct);
+        return;
+    }
 
-        addToCart(name, price);
-        flashAdded(button, price);
+    addToCart(name, price);
+    flashAdded(button, price);
+}
+
+document.querySelectorAll('[data-menu-item]').forEach((card) => {
+    card.addEventListener('click', () => {
+        selectProduct(card);
     });
 });
 
