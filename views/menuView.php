@@ -93,9 +93,7 @@ function afficherProduit(array $produit, string $groupe, string $optionsType): v
     <span id="menu-top" class="menu-top-anchor" aria-hidden="true"></span>
     <h1 class="menu-title">Menu</h1>
     <div class="menu-badges" aria-label="Informations du menu">
-        <span class="halal-badge halal-badge--small" aria-label="Viandes halal">
-            <span>Halal</span>
-        </span>
+        <img src="/assets/img/halal.svg" alt="Viandes halal" class="halal-logo halal-logo--small">
     </div>
 
     <div class="menu-navigation" id="menu-anchors">

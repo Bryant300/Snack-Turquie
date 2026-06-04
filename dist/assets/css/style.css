@@ -228,31 +228,13 @@ nav .cart-button {
     filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.34));
 }
 
-.halal-badge {
-    width: 58px;
-    height: 58px;
-    display: inline-grid;
-    place-items: center;
-    margin-bottom: 14px;
-    color: #10442d;
-    font-family: "Poppins", Arial, sans-serif;
-    font-size: 0.82rem;
-    font-weight: 800;
-    line-height: 1;
-    text-transform: uppercase;
-    background: radial-gradient(circle at 35% 28%, #ffffff 0%, #e7f8ec 38%, #c6ebd2 100%);
-    border: 2px solid rgba(35, 138, 88, 0.45);
-    border-radius: 50%;
-    box-shadow: 0 10px 22px rgba(35, 138, 88, 0.18);
-}
-
-.halal-badge span {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(35, 138, 88, 0.34);
-    border-radius: 50%;
+.halal-logo {
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin-bottom: 16px;
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
 }
 
 .hero h1 {
@@ -514,16 +496,10 @@ a.hero-info__item:hover {
     margin: -18px 0 28px;
 }
 
-.halal-badge--small {
-    width: 48px;
-    height: 48px;
+.halal-logo--small {
+    width: 52px;
+    height: 52px;
     margin-bottom: 0;
-    font-size: 0.7rem;
-}
-
-.halal-badge--small span {
-    width: 36px;
-    height: 36px;
 }
 
 /* =========================
