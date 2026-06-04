@@ -28,6 +28,10 @@ $pages = @{
     "menu.html" = "public\menu.php"
     "contact.html" = "public\contact.php"
     "panier.html" = "public\panier.php"
+    "mentions-legales.html" = "public\mentions-legales.php"
+    "confidentialite.html" = "public\confidentialite.php"
+    "allergenes.html" = "public\allergenes.php"
+    "conditions-commande.html" = "public\conditions-commande.php"
 }
 
 foreach ($page in $pages.GetEnumerator()) {

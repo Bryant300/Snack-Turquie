@@ -20,6 +20,22 @@
     {
       "source": "/panier.php",
       "destination": "/panier.html"
+    },
+    {
+      "source": "/mentions-legales.php",
+      "destination": "/mentions-legales.html"
+    },
+    {
+      "source": "/confidentialite.php",
+      "destination": "/confidentialite.html"
+    },
+    {
+      "source": "/allergenes.php",
+      "destination": "/allergenes.html"
+    },
+    {
+      "source": "/conditions-commande.php",
+      "destination": "/conditions-commande.html"
     }
   ]
 }
