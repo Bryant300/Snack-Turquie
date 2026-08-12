@@ -1,6 +1,6 @@
 <?php
 $title = "Conditions de commande - Snack Turquie Anderlecht";
-$metaDescription = "Conditions de commande de Snack Turquie : WhatsApp, confirmation, prix, paiement, retrait et livraison.";
+$metaDescription = "Conditions de commande de Snack Turquie : retrait sur place, prix, paiement en ligne et plateformes de livraison partenaires.";
 include 'inc/head.php';
 include 'inc/header.php';
 ?>
@@ -9,10 +9,10 @@ include 'inc/header.php';
     <h1>Conditions de commande</h1>
 
     <section class="legal-section">
-        <h2>Commande via WhatsApp</h2>
+        <h2>Commande en retrait</h2>
         <p>
-            Le panier du site permet de préparer un message WhatsApp. La commande n'est pas automatique :
-            elle devient effective uniquement après confirmation par Snack Turquie.
+            Les commandes passées depuis le site sont prévues pour un retrait sur place au snack,
+            Rue de Fiennes 6, 1070 Anderlecht. Le client doit indiquer un nom et un numéro de téléphone.
         </p>
     </section>
 
@@ -28,8 +28,9 @@ include 'inc/header.php';
     <section class="legal-section">
         <h2>Retrait, livraison et paiement</h2>
         <p>
-            Les modalités de retrait, de livraison, de délai, de frais éventuels et de paiement sont
-            précisées lors de l'échange avec le snack ou via les plateformes partenaires.
+            Le site prépare un parcours de paiement en ligne pour les commandes à retirer sur place.
+            La livraison n'est pas gérée directement par Snack Turquie : pour une livraison, le client doit passer
+            par Takeaway, Uber Eats ou Deliveroo.
         </p>
     </section>
 

@@ -22,6 +22,10 @@
       "destination": "/panier.html"
     },
     {
+      "source": "/checkout.php",
+      "destination": "/checkout.html"
+    },
+    {
       "source": "/mentions-legales.php",
       "destination": "/mentions-legales.html"
     },

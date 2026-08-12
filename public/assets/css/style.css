@@ -1178,7 +1178,8 @@ a.hero-info__item:hover {
     box-shadow: 0 18px 42px rgba(37, 211, 102, 0.32);
 }
 
-.btn-whatsapp.is-disabled {
+.btn-whatsapp.is-disabled,
+.btn-primary.is-disabled {
     opacity: 0.55;
     cursor: not-allowed;
     transform: none;

@@ -31,17 +31,10 @@ include 'inc/header.php';
                 <span>Téléphone</span>
                 <input type="tel" name="customer_phone" data-customer-phone autocomplete="tel" required>
             </label>
+            <input type="hidden" name="order_type" data-order-type value="Retrait sur place">
 
             <label>
-                <span>Mode de commande</span>
-                <select name="order_type" data-order-type required>
-                    <option value="À emporter">À emporter</option>
-                    <option value="Livraison">Livraison</option>
-                </select>
-            </label>
-
-            <label>
-                <span>Heure souhaitée</span>
+                <span>Heure souhaitée de retrait</span>
                 <input type="time" name="order_time" data-order-time>
             </label>
 
@@ -57,15 +50,15 @@ include 'inc/header.php';
         </form>
 
         <p class="cart-confirmation-note">
-            La commande est confirmée uniquement après réponse du snack sur WhatsApp.
+            Les commandes du site sont à récupérer sur place, Rue de Fiennes 6. Pour une livraison, utilisez Takeaway, Uber Eats ou Deliveroo.
         </p>
 
         <div class="cart-actions">
             <a href="/menu.php" class="btn-primary">Retour au menu</a>
             <button class="btn-secondary" type="button" data-cart-clear>Vider le panier</button>
 
-            <a href="#" class="btn-primary btn-whatsapp" data-whatsapp-order>
-                Commander par WhatsApp
+            <a href="/checkout.php" class="btn-primary" data-checkout-link>
+                Continuer vers le paiement
             </a>
         </div>
     </section>

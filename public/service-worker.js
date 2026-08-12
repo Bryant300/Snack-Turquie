@@ -1,9 +1,10 @@
-const CACHE_NAME = 'snack-turquie-v1';
+const CACHE_NAME = 'snack-turquie-v2';
 const CORE_ASSETS = [
     '/',
     '/index.html',
     '/menu.html',
     '/panier.html',
+    '/checkout.html',
     '/contact.html',
     '/assets/css/style.css',
     '/assets/js/script.js',

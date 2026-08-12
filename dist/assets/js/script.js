@@ -51,6 +51,7 @@ menuFilterButtons.forEach((button) => {
 });
 
 const CART_STORAGE_KEY = 'snack-turquie-cart';
+const CHECKOUT_DETAILS_KEY = 'snack-turquie-checkout';
 
 const cartCount = document.querySelector('.cart-button__count');
 const cartList = document.querySelector('[data-cart-list]');
@@ -74,7 +75,17 @@ const customerPhone = document.querySelector('[data-customer-phone]');
 const orderType = document.querySelector('[data-order-type]');
 const orderTime = document.querySelector('[data-order-time]');
 const orderNote = document.querySelector('[data-order-note]');
-const whatsappOrder = document.querySelector('[data-whatsapp-order]');
+const checkoutLink = document.querySelector('[data-checkout-link]');
+const checkoutEmpty = document.querySelector('[data-checkout-empty]');
+const checkoutCustomer = document.querySelector('[data-checkout-customer]');
+const checkoutOrder = document.querySelector('[data-checkout-order]');
+const checkoutPayment = document.querySelector('[data-checkout-payment]');
+const checkoutList = document.querySelector('[data-checkout-list]');
+const checkoutTotal = document.querySelector('[data-checkout-total]');
+const checkoutName = document.querySelector('[data-checkout-name]');
+const checkoutPhone = document.querySelector('[data-checkout-phone]');
+const checkoutTime = document.querySelector('[data-checkout-time]');
+const checkoutNote = document.querySelector('[data-checkout-note]');
 
 let pendingProduct = null;
 
@@ -182,7 +193,7 @@ function renderCartPage() {
     });
 
     cartTotal.textContent = formatPrice(getCartTotal(cart));
-    updateWhatsappLink();
+    updateCheckoutLink();
 }
 
 function addToCart(name, price, options = {}) {
@@ -201,6 +212,7 @@ function addToCart(name, price, options = {}) {
     saveCart(cart);
     updateCartCount();
     renderCartPage();
+    renderCheckoutPage();
 }
 
 function getSelectedSupplements() {
@@ -216,75 +228,85 @@ function getSelectedSupplements() {
         });
 }
 
-function getCartMessage(cart, name, phone, type, time, note) {
-    const lines = [
-        'Bonjour Snack Turquie, je souhaite passer commande.',
-        '',
-        `Nom : ${name}`,
-        `Téléphone : ${phone}`,
-        `Mode : ${type}`,
-    ];
-
-    if (time) {
-        lines.push(`Heure souhaitée : ${time}`);
+function getCheckoutDetails() {
+    try {
+        return JSON.parse(sessionStorage.getItem(CHECKOUT_DETAILS_KEY)) ?? {};
+    } catch {
+        return {};
     }
-
-    if (note) {
-        lines.push(`Remarque : ${note}`);
-    }
-
-    lines.push('');
-    lines.push('Commande :');
-
-    cart.forEach((item) => {
-        const supplements = getCartItemSupplements(item.options);
-
-        lines.push(`- ${item.quantity}x ${item.name} - ${formatPrice(item.price * item.quantity)}`);
-
-        if (item.options?.sauce) {
-            lines.push(`  Sauce : ${item.options.sauce}`);
-        }
-
-        if (item.options?.drink) {
-            lines.push(`  Boisson : ${item.options.drink}`);
-        }
-
-        if (supplements.length) {
-            supplements.forEach((supplement) => {
-                lines.push(`  Supplément : ${supplement.name} (+${formatPrice(supplement.price)})`);
-            });
-        }
-    });
-
-    lines.push('');
-    lines.push(`Total : ${formatPrice(getCartTotal(cart))}`);
-
-    return lines.join('\n');
 }
 
-function updateWhatsappLink() {
-    if (!whatsappOrder) {
+function saveCheckoutDetails() {
+    const details = {
+        name: customerName?.value.trim() ?? '',
+        phone: customerPhone?.value.trim() ?? '',
+        type: 'Retrait sur place',
+        time: orderTime?.value.trim() ?? '',
+        note: orderNote?.value.trim() ?? '',
+    };
+
+    sessionStorage.setItem(CHECKOUT_DETAILS_KEY, JSON.stringify(details));
+
+    return details;
+}
+
+function updateCheckoutLink() {
+    if (!checkoutLink) {
         return;
     }
 
     const cart = getCart();
     const name = customerName?.value.trim() ?? '';
     const phone = customerPhone?.value.trim() ?? '';
-    const type = orderType?.value.trim() ?? 'À emporter';
-    const time = orderTime?.value.trim() ?? '';
-    const note = orderNote?.value.trim() ?? '';
-    const canOrder = cart.length > 0 && name && phone && type;
+    const canCheckout = cart.length > 0 && name && phone;
 
-    whatsappOrder.classList.toggle('is-disabled', !canOrder);
-    whatsappOrder.setAttribute('aria-disabled', String(!canOrder));
+    checkoutLink.classList.toggle('is-disabled', !canCheckout);
+    checkoutLink.setAttribute('aria-disabled', String(!canCheckout));
+}
 
-    if (!canOrder) {
-        whatsappOrder.href = '#';
+function renderCheckoutPage() {
+    if (!checkoutList || !checkoutTotal || !checkoutEmpty || !checkoutCustomer || !checkoutOrder || !checkoutPayment) {
         return;
     }
 
-    const message = encodeURIComponent(getCartMessage(cart, name, phone, type, time, note));
-    whatsappOrder.href = `https://wa.me/3225239727?text=${message}`;
+    const cart = getCart();
+    const details = getCheckoutDetails();
+    const hasCart = cart.length > 0;
+
+    checkoutEmpty.hidden = hasCart;
+    checkoutCustomer.hidden = !hasCart;
+    checkoutOrder.hidden = !hasCart;
+    checkoutPayment.hidden = !hasCart;
+
+    if (checkoutName) checkoutName.textContent = details.name || '-';
+    if (checkoutPhone) checkoutPhone.textContent = details.phone || '-';
+    if (checkoutTime) checkoutTime.textContent = details.time || 'Dès que possible';
+    if (checkoutNote) checkoutNote.textContent = details.note || 'Aucune remarque';
+
+    checkoutList.innerHTML = '';
+
+    cart.forEach((item) => {
+        const supplements = getCartItemSupplements(item.options);
+        const optionLines = [
+            item.options?.sauce ? `Sauce : ${escapeHtml(item.options.sauce)}` : '',
+            item.options?.drink ? `Boisson : ${escapeHtml(item.options.drink)}` : '',
+            supplements.length ? `Suppléments : ${supplements.map((supplement) => `${escapeHtml(supplement.name)} (+${formatPrice(supplement.price)})`).join(', ')}` : '',
+        ].filter(Boolean);
+
+        const row = document.createElement('article');
+        row.className = 'checkout-item';
+        row.innerHTML = `
+            <div>
+                <h3>${escapeHtml(item.name)}</h3>
+                ${optionLines.length ? `<ul>${optionLines.map((line) => `<li>${line}</li>`).join('')}</ul>` : ''}
+            </div>
+            <strong>${item.quantity} x ${formatPrice(item.price)}</strong>
+        `;
+
+        checkoutList.append(row);
+    });
+
+    checkoutTotal.textContent = formatPrice(getCartTotal(cart));
 }
 
 function updateCartItem(index, change) {
@@ -301,6 +323,7 @@ function updateCartItem(index, change) {
     saveCart(nextCart);
     updateCartCount();
     renderCartPage();
+    renderCheckoutPage();
 }
 
 function removeCartItem(index) {
@@ -309,6 +332,7 @@ function removeCartItem(index) {
     saveCart(nextCart);
     updateCartCount();
     renderCartPage();
+    renderCheckoutPage();
 }
 
 function flashAdded(button, price) {
@@ -437,18 +461,19 @@ cartClear?.addEventListener('click', () => {
     saveCart([]);
     updateCartCount();
     renderCartPage();
+    renderCheckoutPage();
 });
 
-customerName?.addEventListener('input', updateWhatsappLink);
-customerPhone?.addEventListener('input', updateWhatsappLink);
-orderType?.addEventListener('change', updateWhatsappLink);
-orderTime?.addEventListener('input', updateWhatsappLink);
-orderNote?.addEventListener('input', updateWhatsappLink);
+customerName?.addEventListener('input', updateCheckoutLink);
+customerPhone?.addEventListener('input', updateCheckoutLink);
+orderType?.addEventListener('change', updateCheckoutLink);
+orderTime?.addEventListener('input', updateCheckoutLink);
+orderNote?.addEventListener('input', updateCheckoutLink);
 
-whatsappOrder?.addEventListener('click', (event) => {
-    updateWhatsappLink();
+checkoutLink?.addEventListener('click', (event) => {
+    updateCheckoutLink();
 
-    if (whatsappOrder.getAttribute('aria-disabled') === 'true') {
+    if (checkoutLink.getAttribute('aria-disabled') === 'true') {
         event.preventDefault();
 
         if (!getCart().length) {
@@ -465,13 +490,14 @@ whatsappOrder?.addEventListener('click', (event) => {
             customerPhone?.focus();
             return;
         }
-
-        orderType?.focus();
     }
+
+    saveCheckoutDetails();
 });
 
 updateCartCount();
 renderCartPage();
+    renderCheckoutPage();
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
